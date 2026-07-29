@@ -8,46 +8,46 @@
 
 <style>
 body{
-  font-family:"Hiragino Kaku Gothic ProN",sans-serif;
-  background:#f0f8ff;
-  text-align:center;
-  padding:20px;
-}
-
-h1{
-  color:#2b7a78;
+font-family:"Hiragino Kaku Gothic ProN",sans-serif;
+background:#f0f8ff;
+text-align:center;
+padding:20px;
 }
 
 .box{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  margin:20px auto;
-  max-width:500px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+background:white;
+border-radius:20px;
+padding:20px;
+max-width:500px;
+margin:auto;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1{
+color:#2b7a78;
 }
 
 input,textarea{
-  width:90%;
-  padding:12px;
-  font-size:18px;
-  border-radius:10px;
-  border:1px solid #aaa;
+width:90%;
+padding:12px;
+font-size:18px;
+border-radius:10px;
+border:1px solid #aaa;
 }
 
 button{
-  margin-top:20px;
-  padding:15px 40px;
-  font-size:20px;
-  border:none;
-  border-radius:30px;
-  background:#2b7a78;
-  color:white;
+margin-top:20px;
+padding:15px 40px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:#2b7a78;
+color:white;
 }
 
 #msg{
-  color:#2b7a78;
-  font-weight:bold;
+color:#2b7a78;
+font-weight:bold;
 }
 </style>
 
@@ -68,11 +68,15 @@ button{
 <p>🚀 次にやりたいこと</p>
 <textarea id="next" rows="4"></textarea>
 
-<br>
-
 <button onclick="save()">保存する</button>
 
 <p id="msg"></p>
+
+<br>
+
+<a href="teacher.html">
+<button>👩‍🏫 先生ページ</button>
+</a>
 
 </div>
 
@@ -81,23 +85,33 @@ button{
 
 function save(){
 
-const data={
+const newData={
 name:document.getElementById("name").value,
 study:document.getElementById("study").value,
 next:document.getElementById("next").value
 };
 
-localStorage.setItem("manabi",JSON.stringify(data));
 
-document.getElementById("msg").innerHTML="🌟 保存しました！";
+let list=JSON.parse(localStorage.getItem("manabiList")) || [];
+
+
+list.push(newData);
+
+
+localStorage.setItem("manabiList",JSON.stringify(list));
+
+
+document.getElementById("msg").innerHTML=
+"🌟 保存しました！";
+
+
+document.getElementById("name").value="";
+document.getElementById("study").value="";
+document.getElementById("next").value="";
 
 }
 
 </script>
-<br>
 
-<a href="teacher.html">
-<button>👩‍🏫 先生ページ</button>
-</a>
 </body>
 </html>
