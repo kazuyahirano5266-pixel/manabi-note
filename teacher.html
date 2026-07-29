@@ -28,12 +28,18 @@ color:#d2691e;
 }
 
 .card{
-background:#fff;
 border:2px solid #ddd;
 border-radius:15px;
 padding:15px;
 margin:15px 0;
 text-align:left;
+}
+
+textarea{
+width:90%;
+padding:10px;
+border-radius:10px;
+font-size:16px;
 }
 
 button{
@@ -43,6 +49,7 @@ border-radius:20px;
 border:none;
 background:#d2691e;
 color:white;
+margin-top:10px;
 }
 </style>
 
@@ -77,15 +84,29 @@ html="まだ記録がありません";
 
 }else{
 
-data.forEach(function(item){
+data.forEach(function(item,index){
 
 html += `
 <div class="card">
+
 👤 ${item.name}<br><br>
+
 ✨ 今日の学び<br>
 ${item.study}<br><br>
+
 🚀 次にやりたいこと<br>
-${item.next}
+${item.next}<br><br>
+
+💬 先生コメント<br>
+
+<textarea id="comment${index}" rows="3">${item.comment || ""}</textarea>
+
+<br>
+
+<button onclick="saveComment(${index})">
+コメント保存
+</button>
+
 </div>
 `;
 
@@ -94,6 +115,22 @@ ${item.next}
 }
 
 document.getElementById("result").innerHTML=html;
+
+}
+
+
+function saveComment(index){
+
+let data=JSON.parse(localStorage.getItem("manabiList")) || [];
+
+data[index].comment=
+document.getElementById("comment"+index).value;
+
+
+localStorage.setItem("manabiList",JSON.stringify(data));
+
+
+alert("コメントを保存しました！");
 
 }
 
