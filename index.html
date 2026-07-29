@@ -61,7 +61,17 @@ font-weight:bold;
 
 <p>🌱 なまえ</p>
 <input type="text" id="name">
+<p>📚 教科を選ぶ</p>
 
+<select id="subject">
+<option value="生活">生活</option>
+<option value="国語">国語</option>
+<option value="算数">算数</option>
+<option value="理科">理科</option>
+<option value="社会">社会</option>
+<option value="道徳">道徳</option>
+<option value="体育">体育</option>
+</select>
 <p>✨ 今日の学び</p>
 <textarea id="study" rows="5"></textarea>
 
@@ -87,6 +97,7 @@ function save(){
 
 const newData={
 name:document.getElementById("name").value,
+subject:document.getElementById("subject").value,
 study:document.getElementById("study").value,
 next:document.getElementById("next").value
 };
