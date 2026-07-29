@@ -3,70 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>学びアルバム</title>
 
 <style>
 body{
-    font-family: sans-serif;
-    background:#eef7ff;
-    margin:0;
+  font-family:"Hiragino Kaku Gothic ProN",sans-serif;
+  background:#f0f8ff;
+  text-align:center;
+  padding:20px;
 }
-header{
-    background:#4CAF50;
-    color:white;
-    padding:20px;
-    text-align:center;
+
+h1{
+  color:#2b7a78;
 }
-main{
-    max-width:700px;
-    margin:auto;
-    background:white;
-    padding:20px;
+
+.box{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin:20px auto;
+  max-width:500px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
+
 input,textarea{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    margin-bottom:15px;
-    font-size:16px;
+  width:90%;
+  padding:12px;
+  font-size:18px;
+  border-radius:10px;
+  border:1px solid #aaa;
 }
+
 button{
-    width:100%;
-    padding:15px;
-    font-size:18px;
-    background:#4CAF50;
-    color:white;
-    border:none;
-    border-radius:8px;
+  margin-top:20px;
+  padding:15px 40px;
+  font-size:20px;
+  border:none;
+  border-radius:30px;
+  background:#2b7a78;
+  color:white;
+}
+
+#msg{
+  color:#2b7a78;
+  font-weight:bold;
 }
 </style>
+
 </head>
 
 <body>
 
-<header>
+<div class="box">
+
 <h1>📚 学びアルバム</h1>
-<p>今日の学びを記録しよう！</p>
-</header>
 
-<main>
+<p>🌱 なまえ</p>
+<input type="text" id="name">
 
-<label>名前</label>
-<input id="name">
-
-<label>今日学んだこと</label>
+<p>✨ 今日の学び</p>
 <textarea id="study" rows="5"></textarea>
 
-<label>次にやってみたいこと</label>
-<textarea id="next" rows="3"></textarea>
+<p>🚀 次にやりたいこと</p>
+<textarea id="next" rows="4"></textarea>
+
+<br>
 
 <button onclick="save()">保存する</button>
 
-<p id="message"></p>
+<p id="msg"></p>
 
-</main>
+</div>
+
 
 <script>
+
 function save(){
 
 const data={
@@ -77,9 +89,10 @@ next:document.getElementById("next").value
 
 localStorage.setItem("manabi",JSON.stringify(data));
 
-document.getElementById("message").innerHTML="✅ 保存しました！";
+document.getElementById("msg").innerHTML="🌟 保存しました！";
 
 }
+
 </script>
 
 </body>
