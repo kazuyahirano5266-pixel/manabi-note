@@ -79,7 +79,13 @@ font-weight:bold;
 <textarea id="next" rows="4"></textarea>
 
 <button onclick="save()">保存する</button>
+<br>
 
+<button onclick="advice()">
+🤖 学びアドバイス
+</button>
+
+<p id="ai"></p>
 <p id="msg"></p>
 
 <br>
@@ -121,7 +127,49 @@ document.getElementById("study").value="";
 document.getElementById("next").value="";
 
 }
+function advice(){
 
+const subject =
+document.getElementById("subject").value;
+
+let message="";
+
+
+if(subject==="国語"){
+
+message="📖 文章のどの言葉や表現からそう考えたのか、理由を見つけて説明してみましょう。";
+
+}else if(subject==="算数"){
+
+message="➕ 答えだけでなく、どのように考えたのかを図や言葉で説明してみましょう。";
+
+}else if(subject==="生活"){
+
+message="🌱 見つけたことや気付いたことを、相手に分かりやすく伝える方法を考えてみましょう。";
+
+}else if(subject==="理科"){
+
+message="🔬 予想と結果を比べて、なぜそうなったのか理由を考えてみましょう。";
+
+}else if(subject==="社会"){
+
+message="🌏 資料や人の話をもとに、根拠をもって考えを伝えてみましょう。";
+
+}else if(subject==="道徳"){
+
+message="💚 自分の考えだけでなく、相手の立場からも考えてみましょう。";
+
+}else if(subject==="体育"){
+
+message="🏃 できたことや工夫したことを振り返り、次の挑戦につなげてみましょう。";
+
+}
+
+
+document.getElementById("ai").innerHTML=
+"🤖 "+message;
+
+}
 </script>
 
 </body>
