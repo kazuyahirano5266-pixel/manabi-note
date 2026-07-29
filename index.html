@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学びアルバム</title>
+
+<style>
+body{
+    font-family: sans-serif;
+    background:#eef7ff;
+    margin:0;
+}
+header{
+    background:#4CAF50;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+main{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:20px;
+}
+input,textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+    font-size:16px;
+}
+button{
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    background:#4CAF50;
+    color:white;
+    border:none;
+    border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📚 学びアルバム</h1>
+<p>今日の学びを記録しよう！</p>
+</header>
+
+<main>
+
+<label>名前</label>
+<input id="name">
+
+<label>今日学んだこと</label>
+<textarea id="study" rows="5"></textarea>
+
+<label>次にやってみたいこと</label>
+<textarea id="next" rows="3"></textarea>
+
+<button onclick="save()">保存する</button>
+
+<p id="message"></p>
+
+</main>
+
+<script>
+function save(){
+
+const data={
+name:document.getElementById("name").value,
+study:document.getElementById("study").value,
+next:document.getElementById("next").value
+};
+
+localStorage.setItem("manabi",JSON.stringify(data));
+
+document.getElementById("message").innerHTML="✅ 保存しました！";
+
+}
+</script>
+
+</body>
+</html>
